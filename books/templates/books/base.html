@@ -1,0 +1,85 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Book Viewer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static 'css/main.css'%}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="main-container" class="main-container nav-effect-1">
+    <nav class="nav-menu nav-effect-1" id="menu-1">
+        <h2 class="" >The Library</h2>
+        <ul>
+            <li><a class="" href="{% url 'home' %}">Home</a></li>
+            {%if user.is_authenticated%}
+                <li><a class="" href="{%url 'profile'%}">Profile</a></li>
+                <li><a class="" href="{%url 'logout'%}">Logout</a></li>
+            {%else %}
+                <li><a class="" href="{%url 'login'%}">Login</a></li>
+                <li><a class="" href="{%url 'register'%}">Registration</a></li>
+            {%endif%}
+        </ul>
+    </nav>
+
+    <div class="main clearfix">
+
+        <!-- Header Content -->
+        <header id="header" class="page-header">
+            <div class="page-header-container row">
+
+                <!-- Logo -->
+                <div class="main-logo">
+                    <a href="{% url 'home' %}" class="logo">The Library</a>
+                </div>
+
+                <div class="menu-search">
+                    <!-- Main Navigation -->
+                    <div class="main-navigation">
+                        <a href="#">Menu</a>
+                    </div>
+                    <p>{{user.given_name}}</p>
+                    <!-- Search -->
+                    <div class="catalog-search">
+                        <input class="shuffle-search input_field " type="search" autocomplete="off" value="" maxlength="128" id="input-search" />
+                        <label class="input_label" for="input-search">
+                            <span class="input_label-content">Search Library</span>
+                            <span class="input_label-search"></span>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        {%block content%}
+        {%endblock%}
+
+        <!-- Footer Content -->
+        <footer id="footer" class="page-footer">
+            <div class="row footer-wrapper">
+                <div class="copyright small-12 columns">&copy; 2021 </div>
+            </div>
+        </footer>
+    </div>
+    <!-- /main -->
+
+    <div class="main-overlay">
+        <div class="overlay-full"></div>
+    </div>
+
+</div>
+
+<!-- /main-container -->
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/foundation/6.2.0/foundation.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Shuffle/4.0.0/shuffle.min.js'></script><script  src="{%static 'js/main.js'%}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkmhEzl0_rYQfUHa_VV5Kx2TsD0Eo9xqY&callback=initMap&libraries=&v=weekly"async></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/foundation/6.2.0/foundation.min.css'>

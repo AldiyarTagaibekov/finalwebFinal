@@ -1,0 +1,27 @@
+{% extends 'books/base.html' %}
+{%load crispy_forms_tags%}
+{% block content %}
+    <h1>{{user.username}}</h1>
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="width: 75%; margin: 0 auto">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://s26162.pcdn.co/wp-content/uploads/2019/11/book-3998252_1920-Edited.jpg" class="d-block w-100" alt="ulan gay">
+    </div>
+    <div class="carousel-item">
+      <img src="https://www.marketplace.org/wp-content/uploads/2021/01/Books_New-e1611252343470.jpg?fit=2879%2C1619" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://images-cdn.reedsy.com/discovery/post/142/featured_image/large_187b2b29826e2ccf7eb2d88d65d8f1e756259fb5.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Предыдущий</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Следующий</span>
+  </button>
+</div>
+    <div id="map"></div>
+{%endblock content%}

@@ -1,0 +1,86 @@
+{% extends 'books/base.html' %}
+{% load static %}
+ {% block content %}
+
+      <!-- Main Section -->
+    <div class="page-container">
+
+
+      <div class="page-title category-title">
+        <!-- <h1>Book Viewer</h1> -->
+      </div>
+
+      <section id="book_list">
+
+        <div class="toolbar row">
+          <div class="filter-options small-12 medium-9 columns">
+            <a href="#" class="filter-item active" data-group="all">All Categories</a>
+            <a href="#" class="filter-item" data-group="fantasy">Fantasy</a>
+            <a href="#" class="filter-item" data-group="sci-fi">Sci-Fi</a>
+            <a href="#" class="filter-item" data-group="classic">Classics</a>
+            <a href="#" class="filter-item" data-group="fairy">Fairy Tale</a>
+            <a href="#" class="filter-item" data-group="young">Young Adult</a>
+          </div>
+
+          <div class="small-12 medium-3 columns">
+            <select class="sort-options">
+            <option value="" disabled selected>Sort by</option>
+            <option value="" >Featured</option>
+            <option value="title">Alphabetical</option>
+            <option value="date-created">Published</option>
+            </select>
+          </div>
+                  </div>
+
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <div class="grid-shuffle">
+          <ul id="grid" class="row">
+                    {%for book in object_list%}
+            <li class="book-item small-12 medium-6 columns" data-groups='["{{book.genre}}"]' data-date-created='{{book.date}}' data-title='{{book.title}}' data-color='{{book.color}}'>
+              <div class="bk-img">
+                <div class="bk-wrapper">
+                  <div class="bk-book bk-bookdefault">
+                    <div class="bk-front">
+                      <div class="bk-cover" style="background-image: url('{{book.sm_image.url}}')"></div>
+                    </div>
+                    <div class="bk-back"></div>
+                    <div class="bk-left"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item-details">
+                <h3 class="book-item_title">{{book.title}}</h3>
+                <p class="author">by {{book.author}} &bull; {{book.date}}</p>
+                    <p>{{book.subdes}}</p>
+         
+                  <input type="hidden" id="book" data-id="{{ book.id }}">
+                <a href="#" class="button ">Details</a>
+                <a href="{% url 'book_detail' pk=book.pk %}" class="button ">Try</a>
+              </div>
+
+              <div class="overlay-details">
+                <a href="#" class="close-overlay-btn">Close</a>
+                <div class="overlay-image">
+                  <img src='{{book.lar_image.url}}' alt="Book Cover">
+                  <div class="back-color"></div>
+                </div>
+                <div class="overlay-desc activated">
+                  <h2 class="overlay_title">{{book.title}}</h2>
+                  <p class="author">by {{book.author}}</p>
+                  <p class="published">{{book.date}}</p>
+                  <p class="synopsis">{{book.description}}</p>
+
+                </div>
+              </div>
+            </li>
+            {%endfor%}
+
+    
+          </ul>
+        </div>
+
+      </section>
+
+    </div>
+    
+{% endblock %}
